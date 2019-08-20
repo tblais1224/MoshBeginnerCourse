@@ -22,6 +22,12 @@ namespace Variables
             Console.WriteLine(character);
             Console.WriteLine(firstName);
             Console.WriteLine(isWorking);
+
+            // below returns 0 255
+            Console.WriteLine("{0} {1}", byte.MinValue, byte.MaxValue);
+            // below returns -3.402823E+38 3.402823E+38
+            Console.WriteLine("{0} {1}", float.MinValue, float.MaxValue);
+            
         }
     }
 }
