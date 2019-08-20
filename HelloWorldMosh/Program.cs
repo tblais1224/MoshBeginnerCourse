@@ -10,44 +10,22 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            byte b = 1;
-            int integer = b;
-            Console.WriteLine(integer);
-
-            int i = 1000;
-            byte by = (byte)i;
-            //returns 232
-            Console.WriteLine(by);
-
-            var number = "1234";
-            int iNum = Convert.ToInt32(number);
-            Console.WriteLine(iNum);
-
-
-
-            try
-            {
-                //this will result in overflow error, so catch will be run   n  
-                var number3 = "1234";
-                byte iNum3 = Convert.ToByte(number3);
-                Console.WriteLine(iNum3);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("the number could not be converted to a byte");
-            }
-
-            try
-            {
-                //this will run the try and avoid a catch error
-                string str = "true";
-                bool bool1 = Convert.ToBoolean(str);
-                Console.WriteLine(bool1);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("the string could not be converted to a boolean");
-            }
+            var a = 1;
+            var b = 2;
+            var c = 3;
+            // normal math order is followed, multiplication and division then add and subtract
+            //returns 7
+            Console.WriteLine(a + b * c);
+            //returns false
+            Console.WriteLine(a > b);
+            //returns true
+            Console.WriteLine(a != b);
+            //returns false
+            Console.WriteLine(!(a != b));
+            //returns false
+            Console.WriteLine(c > b && c == a);
+            // returns true
+            Console.WriteLine(c > b || c == a);
         }
     }
 }
