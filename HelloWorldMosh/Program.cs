@@ -10,24 +10,44 @@ namespace Variables
     {
         static void Main(string[] args)
         {
-            byte number = 2;
-            int count = 10;
-            float totalPrice = 20.95f;
-            char character = 'a';
-            string firstName = "Tom";
-            bool isWorking = true;
-            Console.WriteLine(number);
-            Console.WriteLine(count);
-            Console.WriteLine(totalPrice);
-            Console.WriteLine(character);
-            Console.WriteLine(firstName);
-            Console.WriteLine(isWorking);
+            byte b = 1;
+            int integer = b;
+            Console.WriteLine(integer);
 
-            // below returns 0 255
-            Console.WriteLine("{0} {1}", byte.MinValue, byte.MaxValue);
-            // below returns -3.402823E+38 3.402823E+38
-            Console.WriteLine("{0} {1}", float.MinValue, float.MaxValue);
-            
+            int i = 1000;
+            byte by = (byte)i;
+            //returns 232
+            Console.WriteLine(by);
+
+            var number = "1234";
+            int iNum = Convert.ToInt32(number);
+            Console.WriteLine(iNum);
+
+
+
+            try
+            {
+                //this will result in overflow error, so catch will be run   n  
+                var number3 = "1234";
+                byte iNum3 = Convert.ToByte(number3);
+                Console.WriteLine(iNum3);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("the number could not be converted to a byte");
+            }
+
+            try
+            {
+                //this will run the try and avoid a catch error
+                string str = "true";
+                bool bool1 = Convert.ToBoolean(str);
+                Console.WriteLine(bool1);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("the string could not be converted to a boolean");
+            }
         }
     }
 }
