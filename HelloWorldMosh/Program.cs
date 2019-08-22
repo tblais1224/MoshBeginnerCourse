@@ -6,35 +6,58 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace RefAndValTypes
+namespace Conditionals
 {
-    public class Person
-    {
-        public int Age;
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            var number = 1;
-            Increment(number);
-            // returns 1
-            Console.WriteLine(number);
+            int hour = 10;
+            if (hour > 0 && hour < 12)
+            {
+                Console.WriteLine("Its morning");
+            }
+            else if (hour >= 12 && hour < 18)
+            {
+                Console.WriteLine("its afternoon");
+            }
+            else
+            {
+                Console.WriteLine("Its evenign");
+            }
 
-            var person = new Person() { Age = 20 };
-            MakeOld(person);
-            // age will now be 30
-            Console.WriteLine(person.Age);
-        }
+            //ternary
+            bool isGoldCustomer = true;
+            float price = (isGoldCustomer) ? 19.95f : 29.95f;
+            Console.WriteLine(price);
 
-        public static void Increment(int number)
-        {
-            number += 10;
-        }
+            var season = Season.Autumn;
+            switch (season)
+            {
+                case Season.Autumn:
+                    Console.WriteLine("Its Autumn");
+                    break;
+                case Season.Summer:
+                    Console.WriteLine("Its summer");
 
-        public static void MakeOld(Person person)
-        {
-            person.Age += 10;
+                    break;
+                default:
+                    Console.WriteLine("Dont understand");
+                    break;
+            }
+
+
+            var season1 = Season.Autumn;
+            switch (season1)
+            {
+                case Season.Autumn:
+                case Season.Summer:
+                    Console.WriteLine("seasons are working");
+                    break;
+                default:
+                    Console.WriteLine("Dont understand");
+                    break;
+            }
         }
     }
 }
