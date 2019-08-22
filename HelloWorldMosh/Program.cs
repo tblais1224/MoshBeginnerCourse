@@ -8,26 +8,33 @@ using System.Threading.Tasks;
 
 namespace RefAndValTypes
 {
+    public class Person
+    {
+        public int Age;
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            var a = 10;
-            // creates two memory locations in the stack
-            var b = a;
-            b++;
+            var number = 1;
+            Increment(number);
+            // returns 1
+            Console.WriteLine(number);
 
-            // returns a = 10 and b = 11
-            Console.WriteLine(string.Format("a: {0}, b: {1}", a, b));
+            var person = new Person() { Age = 20 };
+            MakeOld(person);
+            // age will now be 30
+            Console.WriteLine(person.Age);
+        }
 
-            var array1 = new int[3] { 1, 2, 3 };
-            // both arrays in the stack will point to same object in memory heap
-            var array2 = array1;
-            // this will change both arrays
-            array2[0] = 0;
-            // both 1 and 2 will return 0
-            Console.WriteLine(string.Format("1[0]: {0}, 2[0]: {1}", array1[0], array2[0]));
+        public static void Increment(int number)
+        {
+            number += 10;
+        }
 
+        public static void MakeOld(Person person)
+        {
+            person.Age += 10;
         }
     }
 }
