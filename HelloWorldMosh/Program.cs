@@ -1,37 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Arrays
+namespace Enums
 {
+    public enum ShippingMethod
+    {
+        RegularAirMail = 1,
+        RegisteredAirMail = 2,
+        Express = 3
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            var firstName = "Tom";
-            // both of the below string examples are the same string type
-            String lastName = "Blais";
-            string myName = "Tom Blais";
+            var method = ShippingMethod.Express;
+            // returns 3
+            Console.WriteLine((int)method);
 
-            var fullName = firstName + " " + lastName;
+            var methodId = 3;
+            //returns Express 
+            Console.WriteLine((ShippingMethod)methodId);
 
-            var myFullName = string.Format("My name is {0} {1}", firstName, lastName);
+            //returns Express
+            Console.WriteLine(method.ToString());
 
-            var names = new string[3] { "Tom", "Maddie", "Joe" };
-            var formattedNames = string.Join(", ", names);
-            Console.WriteLine(formattedNames);
+            //returns Express
+            Console.WriteLine(method);
 
-            var test = "Hi John\nLook into the paths\nc:\\folder1\\folder2\nc:\\folder3\\folder4";
-            Console.WriteLine(test);
-
-            var testVerbatimString = @"Hi Tom
-Look into the following paths
-c:\folder1\folder2
-c:\folder3\folder4";
-            Console.WriteLine(testVerbatimString);
+            var methodName = "Express";
+            var shippingMethod = (ShippingMethod)Enum.Parse(typeof(ShippingMethod), methodName);
+            // return Express
+            Console.WriteLine(shippingMethod);
         }
     }
 }
