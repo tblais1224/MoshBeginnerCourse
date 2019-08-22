@@ -6,57 +6,75 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Conditionals
+namespace Iterations
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int hour = 10;
-            if (hour > 0 && hour < 12)
+            //2, 4, 8, 10
+            for (int i = 1; i <= 10; i++)
             {
-                Console.WriteLine("Its morning");
-            }
-            else if (hour >= 12 && hour < 18)
-            {
-                Console.WriteLine("its afternoon");
-            }
-            else
-            {
-                Console.WriteLine("Its evenign");
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                }
             }
 
-            //ternary
-            bool isGoldCustomer = true;
-            float price = (isGoldCustomer) ? 19.95f : 29.95f;
-            Console.WriteLine(price);
-
-            var season = Season.Autumn;
-            switch (season)
+            Console.WriteLine("\n");
+            // 10, 8, 4, 2
+            for (int i = 10; i >= 1; i--)
             {
-                case Season.Autumn:
-                    Console.WriteLine("Its Autumn");
-                    break;
-                case Season.Summer:
-                    Console.WriteLine("Its summer");
-
-                    break;
-                default:
-                    Console.WriteLine("Dont understand");
-                    break;
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                }
             }
 
 
-            var season1 = Season.Autumn;
-            switch (season1)
+            Console.WriteLine("\n");
+            //prints all letters in name
+            var name = "Tom Blais";
+            for (int i = 0; i < name.Length; i++)
             {
-                case Season.Autumn:
-                case Season.Summer:
-                    Console.WriteLine("seasons are working");
-                    break;
-                default:
-                    Console.WriteLine("Dont understand");
-                    break;
+                Console.WriteLine(name[i]);
+            }
+
+            Console.WriteLine("\n");
+            //also prints all letters in name
+            foreach (var character in name)
+            {
+                Console.WriteLine(character);
+            }
+
+
+
+            Console.WriteLine("\n");
+            //prints all numbers in array
+            var numbers = new int[] { 1, 2, 3, 4 };
+            foreach (var num in numbers)
+            {
+                Console.WriteLine(num);
+            }
+
+
+
+            Console.WriteLine("\n");
+            //does same as first above for loop
+            var j = 1;
+            while (j <= 10)
+            {
+                if (j % 2 == 0)
+                {
+                    Console.WriteLine(j);
+                }
+                j++;
+            }
+
+            Console.WriteLine("\n");
+            while (true)
+            {
+                Console.WriteLine("type your name");
             }
         }
     }
