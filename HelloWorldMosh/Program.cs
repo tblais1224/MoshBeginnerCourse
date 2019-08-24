@@ -12,20 +12,45 @@ namespace Random
     {
         static void Main(string[] args)
         {
-            var random = new System.Random();
-            for (int i = 0; i < 10; i++)
+            var numbers = new int[] { 3, 5, 6, 3, 14, 6 };
+            //length
+            Console.WriteLine("Length: " + numbers.Length);
+
+            //index
+            var index = Array.IndexOf(numbers, 14);
+            Console.WriteLine("Index: " + index);
+
+            //clear
+            Array.Clear(numbers, 0, 2);
+            foreach (var num in numbers)
             {
-                Console.WriteLine(random.Next(1, 10));
+                Console.WriteLine(num);
             }
 
-            for (int x = 0; x < 10; x++)
+            //copy
+            int[] another = new int[4];
+            Array.Copy(numbers, another, 4);
+            Console.WriteLine("Copy effect: ");
+            foreach (var n in another)
             {
-                //generate random letters using ascii
-                Console.Write((char)random.Next(97, 122));
-                //below will also generate random letters
-                Console.Write((char)('a' + random.Next(0, 26)));
+                Console.WriteLine(n);
             }
-            Console.WriteLine();
+
+            //sort
+            Array.Sort(numbers);
+            foreach (var sorted in numbers)
+            {
+                Console.WriteLine(sorted);
+            }
+
+            //reverse
+            Array.Reverse(numbers);
+            foreach (var reversed in numbers)
+            {
+                Console.WriteLine(reversed);
+            }
+
+
         }
     }
 }
