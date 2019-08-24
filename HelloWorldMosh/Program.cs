@@ -6,84 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Iterations
+namespace Random
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //2, 4, 8, 10
-            for (int i = 1; i <= 10; i++)
+            var random = new System.Random();
+            for (int i = 0; i < 10; i++)
             {
-                if (i % 2 == 0)
-                {
-                    Console.WriteLine(i);
-                }
+                Console.WriteLine(random.Next(1, 10));
             }
 
-            Console.WriteLine("\n");
-            // 10, 8, 4, 2
-            for (int i = 10; i >= 1; i--)
+            for (int x = 0; x < 10; x++)
             {
-                if (i % 2 == 0)
-                {
-                    Console.WriteLine(i);
-                }
+                //generate random letters using ascii
+                Console.Write((char)random.Next(97, 122));
+                //below will also generate random letters
+                Console.Write((char)('a' + random.Next(0, 26)));
             }
-
-
-            Console.WriteLine("\n");
-            //prints all letters in name
-            var name = "Tom Blais";
-            for (int i = 0; i < name.Length; i++)
-            {
-                Console.WriteLine(name[i]);
-            }
-
-            Console.WriteLine("\n");
-            //also prints all letters in name
-            foreach (var character in name)
-            {
-                Console.WriteLine(character);
-            }
-
-
-
-            Console.WriteLine("\n");
-            //prints all numbers in array
-            var numbers = new int[] { 1, 2, 3, 4 };
-            foreach (var num in numbers)
-            {
-                Console.WriteLine(num);
-            }
-
-
-
-            Console.WriteLine("\n");
-            //does same as first above for loop
-            var j = 1;
-            while (j <= 10)
-            {
-                if (j % 2 == 0)
-                {
-                    Console.WriteLine(j);
-                }
-                j++;
-            }
-
-            Console.WriteLine("\n");
-            while (true)
-            {
-                Console.WriteLine("type your name");
-                var input = Console.ReadLine();
-                if (!String.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine("@Echo: " + input);
-                    continue;
-                }
-
-                break;
-            }
+            Console.WriteLine();
         }
     }
 }
