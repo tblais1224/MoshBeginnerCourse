@@ -6,51 +6,51 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Random
+namespace Lists
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var numbers = new int[] { 3, 5, 6, 3, 14, 6 };
-            //length
-            Console.WriteLine("Length: " + numbers.Length);
-
-            //index
-            var index = Array.IndexOf(numbers, 14);
-            Console.WriteLine("Index: " + index);
-
-            //clear
-            Array.Clear(numbers, 0, 2);
-            foreach (var num in numbers)
+            var numbers = new List<int>() { 1, 2, 3, 4 };
+            numbers.Add(1);
+            //iEnumerable means you can use array or list (when hovering over addrange)
+            numbers.AddRange(new int[3] { 5, 6, 7 });
+            foreach (var number in numbers)
             {
-                Console.WriteLine(num);
+                Console.WriteLine(number);
+            }
+            //start index from beggining 
+            Console.WriteLine("\nIndex of 1: " + numbers.IndexOf(1));
+            //start indexing from end
+            Console.WriteLine("\nLast Index of 1: " + numbers.LastIndexOf(1));
+            //numbers in list
+            Console.WriteLine("\nCount of list: " + numbers.Count);
+
+            //removes 1s
+            //foreach wont work because length of numbers changes, use for loop
+            /*            foreach (var num in numbers)
+                        {
+                            if (num == 1)
+                            {
+                                numbers.Remove(num);
+                            }
+                        }*/
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (numbers[i] == 1)
+                {
+                    numbers.Remove(numbers[i]);
+                }
+            }
+            foreach (var number2 in numbers)
+            {
+                Console.WriteLine(number2);
             }
 
-            //copy
-            int[] another = new int[4];
-            Array.Copy(numbers, another, 4);
-            Console.WriteLine("Copy effect: ");
-            foreach (var n in another)
-            {
-                Console.WriteLine(n);
-            }
-
-            //sort
-            Array.Sort(numbers);
-            foreach (var sorted in numbers)
-            {
-                Console.WriteLine(sorted);
-            }
-
-            //reverse
-            Array.Reverse(numbers);
-            foreach (var reversed in numbers)
-            {
-                Console.WriteLine(reversed);
-            }
-
-
+            //clears list
+            numbers.Clear();
+            Console.WriteLine("\n Count after clear: " + numbers.Count);
         }
     }
 }
