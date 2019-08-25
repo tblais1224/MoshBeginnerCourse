@@ -6,51 +6,33 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Lists
+namespace DateTime
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var numbers = new List<int>() { 1, 2, 3, 4 };
-            numbers.Add(1);
-            //iEnumerable means you can use array or list (when hovering over addrange)
-            numbers.AddRange(new int[3] { 5, 6, 7 });
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-            //start index from beggining 
-            Console.WriteLine("\nIndex of 1: " + numbers.IndexOf(1));
-            //start indexing from end
-            Console.WriteLine("\nLast Index of 1: " + numbers.LastIndexOf(1));
-            //numbers in list
-            Console.WriteLine("\nCount of list: " + numbers.Count);
+            var dateTime = new System.DateTime(2015, 1, 1);
+            var now = System.DateTime.Now;
+            var today = System.DateTime.Today;
 
-            //removes 1s
-            //foreach wont work because length of numbers changes, use for loop
-            /*            foreach (var num in numbers)
-                        {
-                            if (num == 1)
-                            {
-                                numbers.Remove(num);
-                            }
-                        }*/
-            for (int i = 0; i < numbers.Count; i++)
-            {
-                if (numbers[i] == 1)
-                {
-                    numbers.Remove(numbers[i]);
-                }
-            }
-            foreach (var number2 in numbers)
-            {
-                Console.WriteLine(number2);
-            }
+            Console.WriteLine("Hour: " + now.Hour);
+            Console.WriteLine("Minute: " + now.Minute);
 
-            //clears list
-            numbers.Clear();
-            Console.WriteLine("\n Count after clear: " + numbers.Count);
+            var tomorrow = now.AddDays(1);
+            var yesterday = now.AddDays(-1);
+
+
+            //Sunday, August 25, 2019
+            Console.WriteLine(now.ToLongDateString());
+            //8/25/2019
+            Console.WriteLine(now.ToShortDateString());
+            //4:46:40 PM
+            Console.WriteLine(now.ToLongTimeString());
+            //4:46 PM
+            Console.WriteLine(now.ToShortTimeString());
+            //use formatter to get any desired format
+            Console.WriteLine(now.ToString("yyyy-mm-dd"));
         }
     }
 }
