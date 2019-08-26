@@ -6,58 +6,46 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DateTime
+namespace Strings2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var dateTime = new System.DateTime(2015, 1, 1);
-            var now = System.DateTime.Now;
-            var today = System.DateTime.Today;
+            var fullName = "Tom Blais    ";
+            Console.WriteLine("Trim: '{0}'", fullName.Trim());
+            Console.WriteLine("Trim: '{0}'", fullName.Trim().ToUpper());
 
-            Console.WriteLine("Hour: " + now.Hour);
-            Console.WriteLine("Minute: " + now.Minute);
-
-            var tomorrow = now.AddDays(1);
-            var yesterday = now.AddDays(-1);
-
-            //Sunday, August 25, 2019
-            Console.WriteLine(now.ToLongDateString());
-            //8/25/2019
-            Console.WriteLine(now.ToShortDateString());
-            //4:46:40 PM
-            Console.WriteLine(now.ToLongTimeString());
-            //4:46 PM
-            Console.WriteLine(now.ToShortTimeString());
-            //use formatter to get any desired format
-            Console.WriteLine(now.ToString("yyyy-mm-dd"));
+            var index = fullName.IndexOf(' ');
+            var firstName = fullName.Substring(0, index);
+            var lastName = fullName.Substring(index + 1);
+            Console.WriteLine("fname: " + firstName);
+            Console.WriteLine("lname: " + lastName);
 
 
-            var timeSpan = new TimeSpan(1, 2, 3);
+            var names = fullName.Split(' ');
+            Console.WriteLine("Fname: " + names[0]);
+            Console.WriteLine("Lname: " + names[1]);
 
-            //the next two lines are the same 
-            var timeSpan1 = new TimeSpan(1, 0, 0);
-            var timeSpan2 = TimeSpan.FromHours(1);
 
-            var start = System.DateTime.Now;
-            var end = System.DateTime.Now.AddMinutes(12);
-            var duration = end - start;
-            Console.WriteLine("Duration: " + duration);
+            Console.WriteLine(fullName.Replace("Tom", "Maddie"));
 
-            // properties
-            Console.WriteLine("Minutes: " + timeSpan.Minutes);
-            Console.WriteLine("Total Minutes: " + timeSpan.TotalMinutes);
+            if (String.IsNullOrWhiteSpace(" "))
+            {
+                Console.WriteLine("invalid");
+            }
 
-            //Add
-            Console.WriteLine("Add Example: " + timeSpan.Add(TimeSpan.FromMinutes(8)));
-            Console.WriteLine("Subtract Example: " + timeSpan.Subtract(TimeSpan.FromMinutes(3)));
+            var str = "25";
+            var age = Convert.ToByte(str);
+            Console.WriteLine(age);
 
-            //to string
-            Console.WriteLine("ToString: " + timeSpan.ToString());
-
-            //parse
-            Console.WriteLine("parse: " + TimeSpan.Parse("02:03:04"));
+            float price = 29.95f;
+            //the C will convert to dollar sign
+            Console.WriteLine(price.ToString("C")
+            );
+            // round to whole dollars
+            Console.WriteLine(price.ToString("C0")
+            );
         }
     }
 }
