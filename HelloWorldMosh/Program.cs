@@ -6,26 +6,62 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace StringBuilder
+namespace ProceduralProgramming
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var builder = new System.Text.StringBuilder();
+            Console.Write("What's your name? ");
+            var name = Console.ReadLine();
 
-            builder.Append('-', 10)
-                .AppendLine()
-                .Append("Header")
-                .AppendLine()
-                .Append('-', 10)
-                .Replace('-', '+')
-                .Remove(0, 10)
-                .Insert(0, new string('-', 10));
 
-            Console.WriteLine(builder);
+            Console.WriteLine("Reversed name: " + ReverseName(name));
 
-            Console.WriteLine("First char: " + builder[0]);
+
+
+            var numbers = new List<int>();
+            while (true)
+            {
+                Console.Write("Enter a number (or 'Quit' to exit): ");
+                var input = Console.ReadLine();
+                if (input.ToLower() == "quit")
+                {
+                    break;
+                }
+                numbers.Add(Convert.ToInt32(input));
+            }
+
+
+            Console.WriteLine("Unique numbers:");
+            foreach (var number in GetUniqueNums(numbers))
+            {
+                Console.WriteLine(number);
+            }
+        }
+
+        public static string ReverseName(string name)
+        {
+            var array = new char[name.Length];
+            for (int i = name.Length; i > 0; i--)
+            {
+                array[name.Length - i] = name[i - 1];
+            }
+
+            return new string(array);
+        }
+
+        public static List<int> GetUniqueNums(List<int> numbers)
+        {
+            var uniques = new List<int>();
+            foreach (var number in numbers)
+            {
+                if (!uniques.Contains(number))
+                {
+                    uniques.Add(number);
+                }
+            }
+            return uniques;
         }
     }
 }
